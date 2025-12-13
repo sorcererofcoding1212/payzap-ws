@@ -43,13 +43,13 @@ export class UserManager {
     }
   }
 
-  public notifyUser(amount: number, recieverId: string, senderName: string) {
+  public notifyUser(recieverId: string, notification: string) {
     const targetSocket = this.userIdToUserSocketMap.get(recieverId);
     if (targetSocket && targetSocket.readyState === WebSocket.OPEN) {
       const outgoingMessage: OutgoingRequest = {
         type: NOTIFICATION,
         payload: {
-          msg: `Recieved INR ${amount} from ${senderName}`,
+          msg: notification,
         },
       };
       targetSocket.send(JSON.stringify(outgoingMessage));

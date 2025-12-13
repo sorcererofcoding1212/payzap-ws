@@ -1,17 +1,16 @@
 import { Request, Response } from "express";
 import { IncomingRequest } from "../types/incomingRequest";
-import { TRANSFER } from "../lib/constants";
 import { UserManager } from "../managers/userManager";
+import { NOTIFICATION } from "../lib/constants";
 
 export const notifyUserHandler = async (req: Request, res: Response) => {
   try {
     const body = req.body as IncomingRequest;
 
-    if (body.type === TRANSFER) {
+    if (body.type === NOTIFICATION) {
       UserManager.getInstance().notifyUser(
-        body.payload.amount,
-        body.payload.recieverId,
-        body.payload.senderName
+        body.payload.receiverId,
+        body.payload.content
       );
 
       res.json({
@@ -20,7 +19,7 @@ export const notifyUserHandler = async (req: Request, res: Response) => {
       });
     } else {
       res.json({
-        msg: "Invalis request",
+        msg: "Invalid request",
         success: false,
       });
     }

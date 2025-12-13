@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/controllers/notify.ts","./src/lib/constants.ts","./src/managers/usermanager.ts","./src/routes/notify.ts","./src/types/incomingrequest.ts","./src/types/outgoingrequest.ts"],"version":"5.9.3"}

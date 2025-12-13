@@ -1,4 +1,4 @@
-import { CONNECTION, TRANSFER } from "../lib/constants";
+import { CONNECTION, NOTIFICATION } from "../lib/constants";
 
 export type IncomingRequest =
   | {
@@ -8,10 +8,9 @@ export type IncomingRequest =
       };
     }
   | {
-      type: typeof TRANSFER;
+      type: typeof NOTIFICATION;
       payload: {
-        amount: number;
-        senderName: string;
-        recieverId: string;
+        content: string;
+        receiverId: string
       };
     };
